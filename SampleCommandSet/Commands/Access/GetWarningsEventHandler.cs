@@ -3,8 +3,9 @@ using Autodesk.Revit.UI;
 using revit_mcp_sdk.API.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq; // Add this missing namespace
+using System.Linq;
 using System.Threading;
+using SampleCommandSet.Extensions;
 
 namespace SampleCommandSet.Commands.Access
 {
@@ -96,7 +97,7 @@ namespace SampleCommandSet.Commands.Access
 #if REVIT2024_OR_GREATER
                                     Id = id.Value.ToString(),
 #else
-                                    Id = id.IntegerValue.ToString(),
+                                    Id = id.GetIdValue().ToString(),
 #endif
                                     Category = element?.Category?.Name ?? "Unknown",
                                     Name = element?.Name ?? "Unknown",
